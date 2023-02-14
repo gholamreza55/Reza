@@ -1,0 +1,18 @@
+package tamrin;
+
+import java.util.List;
+
+public class TeImpl implements Te{
+    @Override
+    public List<Person> list() {
+        return null;
+    }
+
+    @Override
+    public void saveImp(List<Person> list) {
+        for (Person person : list) {
+            person.chick();
+        }
+
+    }
+}
