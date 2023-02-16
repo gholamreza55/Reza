@@ -11,6 +11,8 @@ import java.util.List;
 import static java.sql.DriverManager.getConnection;
 
 public class ShopingListDAOImpl implements ShoppingListDAO{
+
+
     private static final String HOST = "jdbc:mysql://localhost:3306/shop";
     private static final String USER = "root";
     private static final String PASS = "Gh1372165509";
@@ -20,8 +22,8 @@ public class ShopingListDAOImpl implements ShoppingListDAO{
 
     @Override
     public List<Item> findAllItems() {
-        List<Item>items = new LinkedList<>();
 
+        List<Item>items = new LinkedList<>();
         try (final Connection con = getConnection(HOST, USER, PASS);
              PreparedStatement select = con.prepareStatement(SELECT_SQL)){
 
@@ -33,7 +35,7 @@ public class ShopingListDAOImpl implements ShoppingListDAO{
                 items.add(new Item(name, quantity));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new MainaSqlException(e);
         }
         return items;
     }
@@ -46,7 +48,8 @@ public class ShopingListDAOImpl implements ShoppingListDAO{
             insert.setInt(2, 5);
             insert.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new MainaSqlException(e);
+
         }
 
     }

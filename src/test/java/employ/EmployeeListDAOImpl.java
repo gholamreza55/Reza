@@ -13,17 +13,18 @@ public class EmployeeListDAOImpl {
     private static final String INSERT_SQL = "INSERT INTO ITEM(name, quantity) VALUES(?, ?)";
     private static final String SELECT_SQL = "SELECT * FROM ITEM ORDER BY id DESC limit 1";
     private static final String DELETE_SQL = "DELETE FROM ITEM ORDER BY id DESC limit 1";
+    private static final String ERROR = "connection to database is impossible";
 
     @Test
     void name() {
         try(Connection coni = DriverManager.getConnection(HOST, USER, PASS)) {
-            Assertions.fail("connection to database is impossible");
+            if (coni == null)
+            Assertions.fail(ERROR);
         } catch (SQLException e) {
             e.printStackTrace();
-            Assertions.fail("connection to database is impossible");
+            Assertions.fail(ERROR);
 
         }
-
     }
 
     @Test

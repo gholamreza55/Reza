@@ -26,11 +26,9 @@ public class Person {
     }
 
     public void chick() {
-        if (id < 1 || id > 100){
-            throw new IdException();
-        }
-        if (name == null || name.isEmpty()){
-            throw new NameException();
+        if (id < 10) {
+
+
         }
     }
 }

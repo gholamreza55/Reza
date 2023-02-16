@@ -27,6 +27,5 @@ public class Item {
         if (quantity < 1 || quantity > 100){
             throw new ItemQuantityException();
         }
-
     }
 }

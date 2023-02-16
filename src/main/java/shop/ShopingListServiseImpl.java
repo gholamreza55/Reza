@@ -3,10 +3,11 @@ package shop;
 import java.util.List;
 
 public class ShopingListServiseImpl implements ShopingListServise {
-    
+    ShoppingListDAO shopingListDAO;
+
+
     @Override
     public List<Item> findAllItems() {
-        ShoppingListDAO shopingListDAO = new ShopingListDAOImpl();
         return shopingListDAO.findAllItems();
     }
 
@@ -16,7 +17,6 @@ public class ShopingListServiseImpl implements ShopingListServise {
             item.check();
 
         }
-        ShoppingListDAO shopingListDAO = new ShopingListDAOImpl();
         shopingListDAO.saveItem(items);
 
     }

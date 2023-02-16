@@ -4,19 +4,18 @@ package employ;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import shop.ItemNameException;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class FruitTest {
-    List<Fruit> fruits = new LinkedList<>();
-    EmployeeListServiceImpl employeeList = new EmployeeListServiceImpl();
+    List<Fruit> fruits;
+    EmployeeListServiceImpl employeeList;
 
     @BeforeEach
     void setUp() {
         fruits = new LinkedList<>();
-        employeeList = new EmployeeListServiceImpl();
+        employeeList = new EmployeeListServiceImpl(new EmployeeListServiceDAOImpl());
 
     }
 
@@ -45,7 +44,7 @@ public class FruitTest {
     @Test
     void name4() {
         fruits.add(new Fruit("Orange", 2));
-        fruits.add(new Fruit("", 0));
+        fruits.add(new Fruit("banana", 0));
             Assertions.assertThrows(FruitQuantityException.class, () -> employeeList.saveFruit(fruits));
 
     }

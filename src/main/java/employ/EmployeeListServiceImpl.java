@@ -3,9 +3,16 @@ package employ;
 import java.util.List;
 
 public class EmployeeListServiceImpl implements EmployeeListService{
+    final EmployeeListServiceDAO employeeListServiceDAO;
+
+    public EmployeeListServiceImpl(EmployeeListServiceDAO employeeListServiceDAO) {
+        this.employeeListServiceDAO = employeeListServiceDAO;
+    }
+
     @Override
     public List<Fruit> findAllFruit() {
-        return null;
+
+        return employeeListServiceDAO.findAllFruit();
     }
 
     @Override
@@ -14,6 +21,7 @@ public class EmployeeListServiceImpl implements EmployeeListService{
             fruit.check();
 
         }
+        employeeListServiceDAO.saveFruit(fruits);
 
     }
 }
