@@ -1,4 +1,6 @@
 package shop;
 
-public class ItemNameException extends RuntimeException{
+import java.io.IOException;
+
+public class ItemNameException extends RuntimeException {
 }
